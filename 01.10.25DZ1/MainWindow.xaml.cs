@@ -19,17 +19,22 @@ namespace _1._10._25Dz
     {
         public List<ToDo> CasesList = new List<ToDo>();
 
-        public MainWindow()
-        {
-            InitializeComponent();
+           public MainWindow()
+    {
+        InitializeComponent();
 
-            CasesList.Add(new ToDo("Приготовить покушать", new DateTime(2024, 1, 15), "Нет описания"));
-            CasesList.Add(new ToDo("Поработать", new DateTime(2024, 1, 20), "Съездить на совещание в Москву"));
-            CasesList.Add(new ToDo("Отдохнуть", new DateTime(2024, 2, 1), "Съездить в отпуск в Сочи"));
-            List.ItemsSource = CasesList;
+        CasesList.Add(new ToDo("Приготовить покушать", new DateTime(2024, 1, 15), "Нет описания"));
+        CasesList.Add(new ToDo("Поработать", new DateTime(2024, 1, 20), "Съездить на совещание в Москву"));
+        CasesList.Add(new ToDo("Отдохнуть", new DateTime(2024, 2, 1), "Съездить в отпуск в Сочи"));
+
+        DataGridToDo.ItemsSource = CasesList;
+
+        
 
 
-        }
+
+    }
+
         private void Button_CLick(object sender, RoutedEventArgs e)
         {
 
@@ -38,17 +43,19 @@ namespace _1._10._25Dz
         }
 
 
-        public void UpdateList()
-        {
-            List.ItemsSource = null;
-            List.ItemsSource = CasesList;
-        }
+   
+    public void UpdateList()
+    {
+        DataGridToDo.ItemsSource = null;
+        DataGridToDo.ItemsSource = CasesList;
+    }
 
-        private void DelCase(object sender, RoutedEventArgs e)
-        {
-            CasesList.Remove(List.SelectedItem as ToDo);
-            UpdateList();
-        }
 
+    private void DelCase(object sender, RoutedEventArgs e)
+    {
+        //DataGridToDo.Remove(DataGridToDo.SelectedItem as ToDo);
+        CasesList.Remove(DataGridToDo.SelectedItem as ToDo);
+        UpdateList();
+    }
     }
 }
