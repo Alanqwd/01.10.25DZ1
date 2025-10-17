@@ -17,16 +17,10 @@ namespace _1._10._25Dz
     /// </summary>
     public partial class MainWindow : Window
     {
-        public List<ToDo> CasesList;
+        public List<ToDo> CasesList = new List<ToDo>();
 
         public MainWindow()
         {
-            CasesList = new List<ToDo>();
-
-
-
-
-
             InitializeComponent();
 
             CasesList.Add(new ToDo("Приготовить покушать", new DateTime(2024, 1, 15), "Нет описания"));
@@ -41,6 +35,19 @@ namespace _1._10._25Dz
 
             Case cas = new Case();
             cas.Show();
+        }
+
+
+        public void UpdateList()
+        {
+            List.ItemsSource = null;
+            List.ItemsSource = CasesList;
+        }
+
+        private void DelCase(object sender, RoutedEventArgs e)
+        {
+            CasesList.Remove(List.SelectedItem as ToDo);
+            UpdateList();
         }
 
     }

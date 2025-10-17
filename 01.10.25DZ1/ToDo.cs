@@ -8,27 +8,19 @@ namespace _1._10._25Dz
 {
     public class ToDo
     {
+
         public string CaseName { get; set; }
-        public DateTime? DateExecution { get; set; }
-        public string DescriptionCase { get; set; }
+        public DateTime? TimeCompleating { get; set; }
+        public string DateDescription { get; set; }
 
 
-        public ToDo(string casename, DateTime? dateexecution, string descriptioncase)
+
+        public ToDo(string caseName, DateTime? timeCompleating, string Datedescription)
         {
-            CaseName = casename;
-            DateExecution = dateexecution;
-            DescriptionCase = descriptioncase;
-
+            CaseName = caseName;
+            TimeCompleating = timeCompleating;
+            DateDescription = Datedescription;
         }
-
-
-
-
-
-
-
-
-
 
     }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _1._10._25Dz;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,5 +24,27 @@ namespace _01._10._25DZ1
         {
             InitializeComponent();
         }
+  
+
+            private void SaveCase(object sender, RoutedEventArgs e)
+            {
+                MainWindow mainWindow = new MainWindow();
+                string case_name = titleToDo.Text;
+                DateTime? date_case = dateToDo.SelectedDate;
+                string case_description = descriptionToDo.Text;
+
+
+
+                mainWindow.CasesList.Add(new ToDo(case_name, date_case, case_description));
+
+                titleToDo.Text = null;
+                dateToDo.SelectedDate = null;
+                descriptionToDo.Text = null;
+
+                mainWindow.UpdateList();
+                this.Close();
+            }
+        }
     }
-}
+
+
