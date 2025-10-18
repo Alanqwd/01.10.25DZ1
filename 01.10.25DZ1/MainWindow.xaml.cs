@@ -35,15 +35,13 @@ namespace _1._10._25Dz
 
     }
 
-        private void Button_CLick(object sender, RoutedEventArgs e)
+        private void AddCase(object sender, RoutedEventArgs e)
         {
 
             Case cas = new Case();
             cas.Show();
         }
 
-
-   
     public void UpdateList()
     {
         DataGridToDo.ItemsSource = null;
@@ -53,7 +51,6 @@ namespace _1._10._25Dz
 
     private void DelCase(object sender, RoutedEventArgs e)
     {
-        //DataGridToDo.Remove(DataGridToDo.SelectedItem as ToDo);
         CasesList.Remove(DataGridToDo.SelectedItem as ToDo);
         UpdateList();
     }
