@@ -24,27 +24,29 @@ namespace _01._10._25DZ1
         {
             InitializeComponent();
         }
-  
 
-            private void SaveCase(object sender, RoutedEventArgs e)
+        private void SaveCase(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            string case_name = titleToDo.Text;
+            DateTime? date_case = dateToDo.SelectedDate;
+            string case_description = descriptionToDo.Text;
+            string case_title = titleToDo.Text;
+
+            if (this.Owner is MainWindow main)
             {
-                MainWindow mainWindow = new MainWindow();
-                string case_name = titleToDo.Text;
-                DateTime? date_case = dateToDo.SelectedDate;
-                string case_description = descriptionToDo.Text;
 
-
-
-                mainWindow.CasesList.Add(new ToDo(case_name, date_case, case_description));
+                main.CasesList.Add(new ToDo(case_name, date_case, case_description, case_title));
 
                 titleToDo.Text = null;
                 dateToDo.SelectedDate = null;
                 descriptionToDo.Text = null;
 
-                mainWindow.UpdateList();
+                main.UpdateList();
                 this.Close();
             }
         }
     }
+}
 
 

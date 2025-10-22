@@ -18,27 +18,27 @@ namespace _1._10._25Dz
     public partial class MainWindow : Window
     {
         public List<ToDo> CasesList = new List<ToDo>();
+        public Case cas = new Case();
 
-           public MainWindow()
+        public MainWindow()
     {
         InitializeComponent();
+            CasesList.Add(new ToDo("Приготовить покушать", new DateTime(2024, 1, 15), "Нет описания", ""));
+            CasesList.Add(new ToDo("Поработать", new DateTime(2024, 1, 20), "Съездить на совещание в Москву", ""));
+            CasesList.Add(new ToDo("Отдохнуть", new DateTime(2024, 2, 1), "Съездить в отпуск в Сочи", ""));
 
-        CasesList.Add(new ToDo("Приготовить покушать", new DateTime(2024, 1, 15), "Нет описания"));
-        CasesList.Add(new ToDo("Поработать", new DateTime(2024, 1, 20), "Съездить на совещание в Москву"));
-        CasesList.Add(new ToDo("Отдохнуть", new DateTime(2024, 2, 1), "Съездить в отпуск в Сочи"));
-
-        DataGridToDo.ItemsSource = CasesList;
-
-        
+            DataGridToDo.ItemsSource = CasesList;
 
 
 
-    }
+
+
+        }
 
         private void AddCase(object sender, RoutedEventArgs e)
         {
 
-            Case cas = new Case();
+            cas.Owner = this;
             cas.Show();
         }
 
