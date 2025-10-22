@@ -13,7 +13,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="Список дел" FontSize="26" HorizontalAlignment="Center" />
+        <TextBlock Grid.Row="0" Text="Новое дело" FontSize="26" HorizontalAlignment="Center" />
 
         <StackPanel Grid.Row="1"  Name ="groupBoxToDo"  Margin="5" Background="#FDF5DF" >
             <StackPanel Margin="5" >
