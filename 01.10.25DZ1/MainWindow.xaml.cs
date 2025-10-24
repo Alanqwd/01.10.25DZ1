@@ -9,16 +9,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using _01._10._25DZ1;
+using _1._10._25Dz;
 
 namespace _1._10._25Dz
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+     public partial class MainWindow : Window
     {
         public List<ToDo> CasesList = new List<ToDo>();
-        public Case cas = new Case();
+       
 
         public MainWindow()
     {
@@ -30,16 +31,13 @@ namespace _1._10._25Dz
             DataGridToDo.ItemsSource = CasesList;
 
 
-
-
-
         }
 
         private void AddCase(object sender, RoutedEventArgs e)
         {
-
+            Case cas = new Case();
             cas.Owner = this;
-            cas.Show();
+            cas.ShowDialog();
         }
 
     public void UpdateList()

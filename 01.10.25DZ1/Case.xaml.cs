@@ -20,6 +20,7 @@ namespace _01._10._25DZ1
     /// </summary>
     public partial class Case : Window
     {
+        public MainWindow MainWin { get; set; }
         public Case()
         {
             InitializeComponent();
@@ -36,6 +37,10 @@ namespace _01._10._25DZ1
             if (this.Owner is MainWindow main)
             {
 
+                if (date_case == null)
+                {
+                    date_case = new DateTime(0001, 01, 01);
+                }
                 main.CasesList.Add(new ToDo(case_name, date_case, case_description, case_title));
 
                 titleToDo.Text = null;
@@ -45,8 +50,10 @@ namespace _01._10._25DZ1
                 main.UpdateList();
                 this.Close();
             }
+
+
+
         }
     }
+
 }
-
-
