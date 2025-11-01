@@ -10,23 +10,21 @@ namespace _1._10._25Dz
     {
 
         public string CaseName { get; set; }
-        public DateTime? TimeCompleating { get; set; }
-        public string DateDescription { get; set; }
+        public DateTime? TimeOfCompleating { get; set; }
         public string Description { get; set; }
+        public bool IsCompleted { get; set; }
 
 
-        public ToDo(string caseName, DateTime? timeCompleating, string description, string Datedescription)
+        public ToDo(string caseName, DateTime? timeOfCompleating, string description)
         {
-            Description = description;
             CaseName = caseName;
-            TimeCompleating = timeCompleating;
-            DateDescription = Datedescription;
+            TimeOfCompleating = timeOfCompleating;
+            Description = description;
         }
 
+
+
+
+
     }
-
-
-
-
-
 }

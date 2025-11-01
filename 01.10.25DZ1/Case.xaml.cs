@@ -25,33 +25,50 @@ namespace _01._10._25DZ1
         {
             InitializeComponent();
         }
-
         private void SaveCase(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             string case_name = titleToDo.Text;
             DateTime? date_case = dateToDo.SelectedDate;
             string case_description = descriptionToDo.Text;
-            string case_title = titleToDo.Text;
+
+            //this.Owner = mainWindow;
 
             if (this.Owner is MainWindow main)
             {
-
+                if (case_name == "")
+                {
+                    case_name = "Нет названия";
+                }
                 if (date_case == null)
                 {
                     date_case = new DateTime(0001, 01, 01);
                 }
-                main.CasesList.Add(new ToDo(case_name, date_case, case_description, case_title));
+                if (case_description == "")
+                {
+                    case_description = "Нет описания";
+                }
+                main.CasesList.Add(new ToDo(case_name, date_case, case_description));
 
                 titleToDo.Text = null;
                 dateToDo.SelectedDate = null;
                 descriptionToDo.Text = null;
 
                 main.UpdateList();
+                main.compleatedCases = 0;
+                main.CasesProgress.Value = 0;
+                main.Val.Text = main.compleatedCases.ToString();
+                main.CasesProgress.Maximum = main.casesCount;
+                main.Max.Text = main.casesCount.ToString();
                 this.Close();
             }
 
 
+
+        }
+
+        private void EndToDo()
+        {
 
         }
     }

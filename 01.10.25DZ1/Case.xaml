@@ -11,18 +11,35 @@
 
 
     <Window.Resources>
-        <Style x:Key="HeaderStyle">
-            <Setter Property="Control.FontFamily" Value="Cascadia Mono"></Setter>
-            <Setter Property="Control.FontSize" Value="26"></Setter>
-            <Setter Property="Control.FontWeight" Value="Bold"></Setter>
-            <Setter Property="Control.Padding" Value="5"></Setter>
-            <Setter Property="Control.Margin" Value="5"></Setter>
+
+        <Style TargetType="TextBox">
+            <Setter Property="ItemsControl.BorderBrush" Value="#5EBEC4"/>
+            <Setter Property="ItemsControl.BorderThickness" Value="1.5"/>
         </Style>
-        <Style x:Key="Item">
-            <Setter Property="ItemsControl.BorderThickness" Value="1,5"></Setter>
-            <Setter Property="ItemsControl.BorderBrush" Value="#5ebec4"></Setter>
+
+        <Style TargetType="DatePicker">
+            <Setter Property="SelectedDateFormat" Value="Long"/>
+            <Setter Property="BorderThickness" Value="1.5"/>
+            <Setter Property="BorderBrush" Value="#5EBEC4"/>
+            <Setter Property="Background" Value="#FFFDFAF1"/>
 
         </Style>
+
+        <Style x:Key="HeaderStyle">
+            <Setter Property="ItemsControl.FontSize" Value="26"/>
+            <Setter Property="ItemsControl.Foreground" Value="#5EBEC4"/>
+            <Setter Property="ItemsControl.FontWeight" Value="Bold"/>
+            <Setter Property="ItemsControl.FontFamily" Value="Cascadia Mono"/>
+
+
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#5EBEC4"/>
+            <Setter Property="ItemsControl.FontFamily" Value="Cascadia Mono"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
     </Window.Resources>
 
     <Grid>
@@ -31,35 +48,28 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        
-        <StackPanel Grid.Row="0" Grid.Column="0">
-                <TextBlock HorizontalAlignment="Center" Style="{StaticResource HeaderStyle}" Foreground="#5ebec4">Новое дело</TextBlock>
-            </StackPanel>
 
-            <StackPanel Grid.Row="1"  Name ="groupBoxToDo"  Margin="5" Background="#FDF5DF" >
-        <StackPanel Margin="5" >
-                <TextBlock FontSize="12" Text="Название:"/>
-                <TextBox Style="{StaticResource Item}"  Name = "titleToDo"  Margin="0, 10"  HorizontalScrollBarVisibility="Auto">Список 1</TextBox>
-            
-            <TextBlock FontSize="12" Text="Выполнить до:"/>
-            
-                <DatePicker>
+        <TextBlock Style="{StaticResource HeaderStyle}"  Grid.Row="0" Text="Новое дело" FontSize="26" HorizontalAlignment="Center" />
+
+        <StackPanel Grid.Row="1"  Name ="groupBoxToDo"  Margin="5" Background="#FDF5DF" >
+            <StackPanel Margin="5" >
+                <TextBlock  FontSize="12" Text="Название:"/>
+                <TextBox Name = "titleToDo"  Margin="0, 10" HorizontalScrollBarVisibility="Auto"></TextBox>
+                <TextBlock FontSize="12" Text="Выполнить до:"/>
+                <DatePicker  Name = "dateToDo"  Margin="0, 10" >
                     <DatePicker.CalendarStyle>
-                    <Style TargetType="Calendar">
-                        <Setter Property="BorderThickness" Value="1.5"/>
-                        <Setter Property="BorderBrush" Value="#5EBEC4"/>
-                        <Setter Property="Background" Value="#FFFDFAF1"/>
-                    </Style>
-                </DatePicker.CalendarStyle>
+                        <Style TargetType="Calendar">
+                            <Setter Property="BorderThickness" Value="1.5"/>
+                            <Setter Property="BorderBrush" Value="#5EBEC4"/>
+                            <Setter Property="Background" Value="White"/>
+                        </Style>
+                    </DatePicker.CalendarStyle>
                 </DatePicker>
-
                 <TextBlock FontSize="12" Text="Описание:"/>
-                <TextBox AcceptsTab="True" AcceptsReturn="True" Style="{StaticResource Item}" Name = "descriptionToDo"  Margin="0, 10" MaxLines="10" MinLines="10" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto">Описания нет</TextBox>
+                <TextBox  AcceptsTab="True" AcceptsReturn="True"  Name = "descriptionToDo"  Margin="0, 10" MaxLines="10" MinLines="10" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"></TextBox>
+            </StackPanel>
         </StackPanel>
-    </StackPanel>
 
-    <Button  Grid.Row="2" Name="buttonSave" Click="SaveCase" Content="Сохранить дело" Background="#5EBEC4" Height="30" Width="100" Margin="5"/>
+        <Button  Grid.Row="2" Name="buttonSave" Click="SaveCase" Content="Сохранить дело" Background="#5EBEC4" Height="30" Width="110" Margin="5"/>
     </Grid>
-    
-    
 </Window>

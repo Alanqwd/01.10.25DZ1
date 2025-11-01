@@ -16,41 +16,111 @@ namespace _1._10._25Dz
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-     public partial class MainWindow : Window
+    public partial class MainWindow : Window
     {
         public List<ToDo> CasesList = new List<ToDo>();
-       
+        public string CasesProgress {  get; set; }
+        public int compleatedCases { get; set; }
+
+        public int casesCount { get; set; }
+
 
         public MainWindow()
-    {
-        InitializeComponent();
-            CasesList.Add(new ToDo("Приготовить покушать", new DateTime(2024, 1, 15), "Нет описания", ""));
-            CasesList.Add(new ToDo("Поработать", new DateTime(2024, 1, 20), "Съездить на совещание в Москву", ""));
-            CasesList.Add(new ToDo("Отдохнуть", new DateTime(2024, 2, 1), "Съездить в отпуск в Сочи", ""));
+        {
+            InitializeComponent();
+
+            CasesList.Add(new ToDo("Приготовить покушать", new DateTime(2024, 1, 15), "Нет описания"));
+            CasesList.Add(new ToDo("Поработать", new DateTime(2024, 1, 20), "Съездить на совещание в Москву"));
+            CasesList.Add(new ToDo("Отдохнуть", new DateTime(2024, 2, 1), "Съездить в отпуск в Сочи"));
 
             DataGridToDo.ItemsSource = CasesList;
+            casesCount = CasesList.Count;
+
+            CasesProgress.Maximum = casesCount;
+
+            Max.Text = casesCount.ToString();
+            Val.Text = compleatedCases.ToString();
 
 
         }
+
+        /*
+         * <Window.Resources>
+        <Style x:Key="TextStyle">
+            <Setter Property="ItemsControl.BorderBrush" Value="#5EBEC4"/>
+            <Setter Property="ItemsControl.BorderThickness" Value="1,5"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="ItemsControl.BorderBrush" Value="#5EBEC4"/>
+            <Setter Property="ItemsControl.BorderThickness" Value="1,5"/>
+        </Style>
+    </Window.Resources>
+        Style="{StaticResource TextStyle}"
+         */
 
         private void AddCase(object sender, RoutedEventArgs e)
         {
             Case cas = new Case();
             cas.Owner = this;
             cas.ShowDialog();
+
+            casesCount = CasesList.Count;
+            CasesProgress.Maximum = casesCount;
+            Max.Text = casesCount.ToString();
         }
 
-    public void UpdateList()
-    {
-        DataGridToDo.ItemsSource = null;
-        DataGridToDo.ItemsSource = CasesList;
-    }
+      
+
+        public void UpdateList()
+        {
+            DataGridToDo.ItemsSource = null;
+            DataGridToDo.ItemsSource = CasesList;
+            casesCount = CasesList.Count;
+            Max.Text = casesCount.ToString();
+        }
 
 
-    private void DelCase(object sender, RoutedEventArgs e)
-    {
-        CasesList.Remove(DataGridToDo.SelectedItem as ToDo);
-        UpdateList();
-    }
+        private void DelCase(object sender, RoutedEventArgs e)
+        {
+            //DataGridToDo.Remove(DataGridToDo.SelectedItem as ToDo);
+            CasesList.Remove(DataGridToDo.SelectedItem as ToDo);
+            UpdateList();
+            compleatedCases = 0;
+            CasesProgress.Value = compleatedCases;
+            CasesProgress.Maximum = casesCount;
+            Val.Text = compleatedCases.ToString();
+            Max.Text = casesCount.ToString();
+
+
+        }
+
+
+        private void CasesPlus(object sender, RoutedEventArgs e)
+        {
+            compleatedCases++;
+            CasesProgress.Value = compleatedCases;
+            Val.Text = compleatedCases.ToString();
+            Max.Text = casesCount.ToString();
+
+            /*ToDo temp = new ToDo();
+            temp = sender as ToDo;
+            temp.IsCompleted = true;*/
+
+
+
+        }
+
+        private void CasesMin(object sender, RoutedEventArgs e)
+        {
+            compleatedCases--;
+            CasesProgress.Value = compleatedCases;
+            Val.Text = compleatedCases.ToString();
+            Max.Text = casesCount.ToString();
+
+            /*ToDo temp = new ToDo();
+            temp = sender as ToDo;
+            temp.IsCompleted = false;*/
+        }
     }
 }
